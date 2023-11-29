@@ -78,46 +78,42 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    newboard=list(board)
     
-    rowsum=[]
-    columnsum=[]
+    gameboard=list(board)
+    row_sum=[]
+    column_sum=[]
     cross=[]
     othercross=[]
     convertcross=[]
-    totalsum=[]
+    total_sum=[]
     
-    for y in range (len(newboard)):
-        for x in range (len(newboard[y])):
-            if newboard[y][x] == 'O':
-                newboard[y][x]=7
+    for y in range (len(gameboard)):
+        for x in range (len(gameboard[y])):
+            if gameboard[y][x] == 'O':
+                gameboard[y][x]=7
             elif board[y][x] == 'X':
-                newboard[y][x]=1
+                gameboard[y][x]=1
             elif board[y][x] == '':
-                newboard[y][x]=0
+                gameboard[y][x]=0
 
-    for x in range (len(newboard)):
-        rowsum.append(sum(newboard[x]))   
-                
-    for x in range (len(newboard)):
-        columnsum.append(sum([item[x] for item in newboard]))
-    
-    for x in range (len(newboard)):
-        cross.append(newboard[x][x])
-        
-    for x in range (len(newboard)):
-        othercross.append([item[len(newboard)-1-x] for item in newboard])
-        
-    for x in range (len(newboard)):
+    for x in range (len(gameboard)):
+        row_sum.append(sum(gameboard[x]))           
+    for x in range (len(gameboard)):
+        column_sum.append(sum([item[x] for item in gameboard])) 
+    for x in range (len(gameboard)):
+        cross.append(gameboard[x][x])
+    for x in range (len(gameboard)):
+        othercross.append([item[len(gameboard)-1-x] for item in gameboard])
+    for x in range (len(gameboard)):
         convertcross.append(othercross[x][x])
                 
-    totalsum=rowsum+columnsum
-    totalsum.append(sum(cross))
-    totalsum.append(sum(convertcross))
+    total_sum = row_sum+column_sum
+    total_sum.append(sum(cross))
+    total_sum.append(sum(convertcross))
     
-    if 7*len(newboard) in totalsum:
+    if 7*len(gameboard) in total_sum:
             answer='O'
-    elif 1*len(newboard) in totalsum:
+    elif 1*len(gameboard) in total_sum:
             answer='X'
     else:
             answer='NO WINNER'
@@ -157,15 +153,16 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    newkeys=list(route_map.keys())
-    firstkeys=[item[0]for item in newkeys]
-    secondkeys=[item[1]for item in newkeys]
+    new_keys=list(route_map.keys())
+    first_keys=[item[0]for item in new_keys]
+    second_keys=[item[1]for item in new_keys]
+
     newtime=list(route_map.values())
     answer=[]
     final=[]
     
-    firstposition=firstkeys.index(first_stop)
-    secondposition=secondkeys.index(second_stop)
+    firstposition=first_keys.index(first_stop)
+    secondposition=second_keys.index(second_stop)
         
     for x in range(len(newtime)):
             answer=answer+list(newtime[x].values())
